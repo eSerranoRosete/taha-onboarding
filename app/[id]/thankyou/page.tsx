@@ -9,10 +9,9 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
+import { steps } from "@/lib/steps";
 import { cn } from "@/lib/utils";
 import Link from "next/link";
-
-import { steps } from "../form/page";
 
 type PageProps = {
   params: {

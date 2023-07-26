@@ -24,12 +24,11 @@ import {
 
 import { useFormStore } from "@/context/useFormContext";
 import { useCounter } from "@/hooks/useCounter";
+import { steps } from "@/lib/steps";
 import { cn } from "@/lib/utils";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { FormEvent } from "react";
-
-export const steps = ["Inversión", "Oportunidades", "Final"];
 
 type PageProps = {
   params: {
