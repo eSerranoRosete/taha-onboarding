@@ -1,20 +1,25 @@
 import { ArrowRightIcon, TimerIcon } from "lucide-react";
 import { Button } from "./ui/button";
-import Link from "next/link";
+
+import { User } from "@/types/AppTypes";
+import { cn } from "@/lib/utils";
 
 type WelcomeCardProps = {
-  user: {
-    id: string;
-    displayName: string;
-    imgSrc: string;
-  };
+  user: User;
+  isActive: boolean;
+  onStart: () => void;
 };
 
-export const WelcomeCard = ({ user }: WelcomeCardProps) => {
+export const WelcomeCard = ({ user, isActive, onStart }: WelcomeCardProps) => {
   return (
-    <div className="flex md:flex-row flex-col gap-10 items-center">
+    <div
+      className={cn(
+        "hidden md:flex-row flex-col gap-10 items-center",
+        isActive && "flex"
+      )}
+    >
       <img
-        className="w-72 md:h-96 h-72 opacity-0 animate-fade-up duration-700 rounded-3xl object-cover object-center"
+        className="w-72 md:h-96 h-72 opacity-0 animate-fade-up duration-700 shadow-xl rounded-3xl object-cover object-center"
         src={user.imgSrc}
       />
       <div className="text-center md:text-left">
@@ -27,12 +32,10 @@ export const WelcomeCard = ({ user }: WelcomeCardProps) => {
           hábitos financieros.
         </p>
         <div className="opacity-0 animate-fade-up delay-500">
-          <Link href={user.id + "/form"}>
-            <Button className="gap-3">
-              Comenzar encuesta
-              <ArrowRightIcon className="w-4 h-4" />
-            </Button>
-          </Link>
+          <Button onClick={onStart} className="gap-3">
+            Comenzar encuesta
+            <ArrowRightIcon className="w-4 h-4" />
+          </Button>
           <p className="text-xs  flex justify-center md:justify-normal gap-2 mt-5">
             <TimerIcon className="w-4 h-4" />
             Duración estimada: 5 min

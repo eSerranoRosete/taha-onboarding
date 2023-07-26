@@ -11,5 +11,9 @@ export const useCounter = (max: number) => {
     setCount((c) => (c > 0 ? c - 1 : c));
   }
 
-  return { count, increment, decrement };
+  function reset() {
+    setCount(0);
+  }
+
+  return { count, increment, decrement, reset };
 };

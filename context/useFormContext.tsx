@@ -34,6 +34,8 @@ type FormActions = {
   setLeadName: (leadName: string) => void;
   setLeadEmail: (leadEmail: string) => void;
   setLeadPhone: (leadPhone: string) => void;
+
+  reset: () => void;
 };
 
 export const useFormStore = create<FormState & FormActions>((set) => ({
@@ -92,4 +94,23 @@ export const useFormStore = create<FormState & FormActions>((set) => ({
   setLeadName: (leadName) => set((state) => ({ ...state, leadName })),
   setLeadEmail: (leadEmail) => set((state) => ({ ...state, leadEmail })),
   setLeadPhone: (leadPhone) => set((state) => ({ ...state, leadPhone })),
+
+  reset: () =>
+    set(() => ({
+      currentInvestment: undefined,
+      investmentType: undefined,
+      investmentOther: undefined,
+
+      noInvestReason: undefined,
+      noInvestReasonOther: undefined,
+
+      wantsToDiversify: undefined,
+      wantsToInvest: undefined,
+
+      investAmount: undefined,
+
+      leadName: undefined,
+      leadEmail: undefined,
+      leadPhone: undefined,
+    })),
 }));

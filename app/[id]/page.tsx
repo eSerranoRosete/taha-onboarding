@@ -1,4 +1,4 @@
-import { WelcomeCard } from "@/components/WelcomeCard";
+import { Form } from "./Form";
 
 type Props = {
   params: {
@@ -11,7 +11,7 @@ export default async function Page({ params }: Props) {
 
   if (!user) return <>User not found</>;
 
-  return <WelcomeCard user={user} />;
+  return <Form user={user} />;
 }
 
 async function getData(id: string) {
