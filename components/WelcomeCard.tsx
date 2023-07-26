@@ -12,7 +12,7 @@ type WelcomeCardProps = {
 
 export const WelcomeCard = ({ user }: WelcomeCardProps) => {
   return (
-    <div className="flex md:flex-row p-4 flex-col gap-10 items-center">
+    <div className="flex md:flex-row flex-col gap-10 items-center">
       <img
         className="w-72 md:h-96 h-72 opacity-0 animate-fade-up duration-700 rounded-3xl object-cover object-center"
         src={user.imgSrc}

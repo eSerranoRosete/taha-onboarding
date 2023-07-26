@@ -58,7 +58,7 @@ export default function Page({ params }: PageProps) {
   };
 
   return (
-    <form onSubmit={onSubmit} className="w-full p-4 min-h-[550px] max-w-lg">
+    <form onSubmit={onSubmit} className="w-full min-h-[550px] max-w-lg">
       <ProgressIndicator currentStep={count} steps={steps} />
       {/* STEP 1 */}
       <Card
