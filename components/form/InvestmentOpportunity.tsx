@@ -32,7 +32,7 @@ export const InvestmentOpportunity = ({
   }));
 
   const showAmountField =
-    form.wantsToDiversify === "yes" || form.wantsToInvest === "yes";
+    form.wantsToDiversify === "si" || form.wantsToInvest === "si";
 
   return (
     <Card
@@ -45,7 +45,7 @@ export const InvestmentOpportunity = ({
         <CardTitle>Oportunidades de Inversión</CardTitle>
       </CardHeader>
       <CardContent className="space-y-5">
-        {form.currentInvestment === "yes" && (
+        {form.currentInvestment === "si" && (
           <fieldset className="space-y-2 animate-fade-up opacity-0 delay-100">
             <Label>
               ¿Has pensado en diversificar tu portafolio invirtiendo en terrenos
@@ -54,14 +54,14 @@ export const InvestmentOpportunity = ({
             <Select
               required={isActive}
               onValueChange={(val) =>
-                form.setWantsToDiversify(val as "yes" | "no")
+                form.setWantsToDiversify(val as "si" | "no")
               }
             >
               <SelectTrigger>
                 <SelectValue placeholder="Selecciona una opción" />
               </SelectTrigger>
               <SelectContent>
-                <SelectItem value="yes">Si</SelectItem>
+                <SelectItem value="si">Si</SelectItem>
                 <SelectItem value="no">No</SelectItem>
               </SelectContent>
             </Select>
@@ -76,15 +76,13 @@ export const InvestmentOpportunity = ({
             </Label>
             <Select
               required={isActive}
-              onValueChange={(val) =>
-                form.setWantsToInvest(val as "yes" | "no")
-              }
+              onValueChange={(val) => form.setWantsToInvest(val as "si" | "no")}
             >
               <SelectTrigger>
                 <SelectValue placeholder="Selecciona una opción" />
               </SelectTrigger>
               <SelectContent>
-                <SelectItem value="yes">Si</SelectItem>
+                <SelectItem value="si">Si</SelectItem>
                 <SelectItem value="no">No</SelectItem>
               </SelectContent>
             </Select>

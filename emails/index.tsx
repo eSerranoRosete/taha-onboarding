@@ -43,7 +43,7 @@ export default function Email(answers: FormState) {
             </Section>
             <Hr className="my-5" />
             <Section>
-              {answers.currentInvestment === "yes" && (
+              {answers.currentInvestment === "si" && (
                 <>
                   <Text className="flex flex-col">
                     <span className="mr-1 font-bold">

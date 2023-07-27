@@ -1,15 +1,15 @@
 import { create } from "zustand";
 
 export type FormState = {
-  currentInvestment?: "yes" | "no";
+  currentInvestment?: "si" | "no";
   investmentType?: string;
   investmentOther?: string;
 
   noInvestReason?: string;
   noInvestReasonOther?: string;
 
-  wantsToDiversify?: "yes" | "no";
-  wantsToInvest?: "yes" | "no";
+  wantsToDiversify?: "si" | "no";
+  wantsToInvest?: "si" | "no";
 
   investAmount?: string;
 
@@ -19,15 +19,15 @@ export type FormState = {
 };
 
 type FormActions = {
-  setCurrentInvestment: (currentInvestment: "yes" | "no") => void;
+  setCurrentInvestment: (currentInvestment: "si" | "no") => void;
   setInvestmentType: (investmentType: string) => void;
   setInvestmentOther: (investmentOther: string) => void;
 
   setNoInvestReason: (noInvestReason: string) => void;
   setNoInvestReasonOther: (noInvestReasonOther: string) => void;
 
-  setWantsToDiversify: (wantsToDiversify: "yes" | "no") => void;
-  setWantsToInvest: (wantsToInvest: "yes" | "no") => void;
+  setWantsToDiversify: (wantsToDiversify: "si" | "no") => void;
+  setWantsToInvest: (wantsToInvest: "si" | "no") => void;
 
   setInvestAmount: (investAmount: string) => void;
 
@@ -49,7 +49,7 @@ export const useFormStore = create<FormState & FormActions>((set) => ({
         wantsToDiversify: undefined,
         investAmount: undefined,
       }),
-      ...(currentInvestment === "yes" && {
+      ...(currentInvestment === "si" && {
         noInvestReason: undefined,
         noInvestReasonOther: undefined,
         wantsToInvest: undefined,

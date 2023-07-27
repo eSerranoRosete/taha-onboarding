@@ -2,6 +2,7 @@ export type User = {
   id: string;
   displayName: string;
   imgSrc: string;
+  email: string;
 };
 
 export const Questions = {

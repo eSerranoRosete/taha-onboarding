@@ -27,8 +27,6 @@ export const Form = ({ user }: FormProps) => {
     e.preventDefault();
     increment();
     if (count === steps.length) {
-      console.log("✅", formState);
-
       const data: FormState = {
         leadName: formState.leadName,
         leadEmail: formState.leadEmail,
@@ -44,11 +42,8 @@ export const Form = ({ user }: FormProps) => {
       };
 
       try {
-        await sendMail({ formState: data, notify: "eserranor98@gmail.com" });
-        console.log("🥳 Email Sent successfully");
-      } catch (error) {
-        console.log("❌ Error sending email");
-      }
+        await sendMail({ formState: data, notify: user.email });
+      } catch (error) {}
 
       formState.reset();
     }

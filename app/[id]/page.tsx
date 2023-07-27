@@ -23,6 +23,7 @@ const users = [
   {
     id: "JF95zMhzULliXJq56NEH",
     displayName: "Alejandra",
+    email: "ale.rosete2@gmail.com",
     imgSrc:
       "https://payloadcms-inteminer.s3.us-east-2.amazonaws.com/images/PHOTO-2023-07-24-21-29-58.jpg",
   },

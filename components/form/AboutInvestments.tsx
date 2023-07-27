@@ -50,19 +50,19 @@ export const AboutInvestments = ({
           <Select
             required
             onValueChange={(val) =>
-              form.setCurrentInvestment(val as "yes" | "no")
+              form.setCurrentInvestment(val as "si" | "no")
             }
           >
             <SelectTrigger>
               <SelectValue placeholder="Selecciona una opción" />
             </SelectTrigger>
             <SelectContent>
-              <SelectItem value="yes">Si</SelectItem>
+              <SelectItem value="si">Si</SelectItem>
               <SelectItem value="no">No</SelectItem>
             </SelectContent>
           </Select>
         </fieldset>
-        {form.currentInvestment === "yes" && (
+        {form.currentInvestment === "si" && (
           <>
             <fieldset className="space-y-2 animate-fade-up opacity-0 delay-100">
               <Label>¿Qué tipo de inversión?</Label>
