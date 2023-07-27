@@ -6,9 +6,10 @@ import { AboutInvestments } from "@/components/form/AboutInvestments";
 import { InvestmentOpportunity } from "@/components/form/InvestmentOpportunity";
 import { LeadInfo } from "@/components/form/LeadInfo";
 import { ProgressIndicator } from "@/components/form/ProgressIndicator";
-import { useFormStore } from "@/context/useFormContext";
+import { FormState, useFormStore } from "@/context/useFormContext";
 
 import { useCounter } from "@/hooks/useCounter";
+import { sendMail } from "@/lib/sendMail";
 import { steps } from "@/lib/steps";
 import { User } from "@/types/AppTypes";
 
@@ -22,11 +23,33 @@ export const Form = ({ user }: FormProps) => {
   const { count, increment, decrement, reset } = useCounter(4);
   const formState = useFormStore((state) => state);
 
-  const onSubmit = (e: FormEvent) => {
+  const onSubmit = async (e: FormEvent) => {
     e.preventDefault();
     increment();
     if (count === steps.length) {
       console.log("✅", formState);
+
+      const data: FormState = {
+        leadName: formState.leadName,
+        leadEmail: formState.leadEmail,
+        leadPhone: formState.leadPhone,
+        currentInvestment: formState.currentInvestment,
+        investmentType: formState.investmentType,
+        investAmount: formState.investAmount,
+        investmentOther: formState.investmentOther,
+        noInvestReason: formState.noInvestReason,
+        noInvestReasonOther: formState.noInvestReasonOther,
+        wantsToDiversify: formState.wantsToDiversify,
+        wantsToInvest: formState.wantsToInvest,
+      };
+
+      try {
+        await sendMail({ formState: data, notify: "eserranor98@gmail.com" });
+        console.log("🥳 Email Sent successfully");
+      } catch (error) {
+        console.log("❌ Error sending email");
+      }
+
       formState.reset();
     }
   };

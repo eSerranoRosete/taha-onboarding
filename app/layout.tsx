@@ -16,12 +16,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={inter.className}>
-        {children}
-        {/* <span className="absolute text-center text-xs bottom-5 left-1/2 -translate-x-1/2">
-          Powered by <strong>Inteminer</strong>
-        </span> */}
-      </body>
+      <body className={inter.className}>{children}</body>
     </html>
   );
 }

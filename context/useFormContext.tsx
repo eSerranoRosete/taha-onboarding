@@ -1,6 +1,6 @@
 import { create } from "zustand";
 
-type FormState = {
+export type FormState = {
   currentInvestment?: "yes" | "no";
   investmentType?: string;
   investmentOther?: string;
