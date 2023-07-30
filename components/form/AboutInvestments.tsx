@@ -7,7 +7,6 @@ import {
   CardTitle,
 } from "../ui/card";
 import { cn } from "@/lib/utils";
-import { Label } from "@radix-ui/react-label";
 
 import { Button } from "../ui/button";
 
@@ -20,6 +19,7 @@ import {
 } from "@/components/ui/select";
 import { useFormStore } from "@/context/useFormContext";
 import { Textarea } from "../ui/textarea";
+import { Label } from "../ui/label";
 
 type AboutInvestmentsProps = {
   isActive: boolean;

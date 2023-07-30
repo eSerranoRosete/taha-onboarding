@@ -46,48 +46,68 @@ export const InvestmentOpportunity = ({
       </CardHeader>
       <CardContent className="space-y-5">
         {form.currentInvestment === "si" && (
-          <fieldset className="space-y-2 animate-fade-up opacity-0 delay-100">
-            <Label>
-              ¿Has pensado en diversificar tu portafolio invirtiendo en terrenos
-              patrimoniales?
-            </Label>
-            <Select
-              required={isActive}
-              onValueChange={(val) =>
-                form.setWantsToDiversify(val as "si" | "no")
-              }
-            >
-              <SelectTrigger>
-                <SelectValue placeholder="Selecciona una opción" />
-              </SelectTrigger>
-              <SelectContent>
-                <SelectItem value="si">Si</SelectItem>
-                <SelectItem value="no">No</SelectItem>
-              </SelectContent>
-            </Select>
-          </fieldset>
+          <>
+            <fieldset className="space-y-2 animate-fade-up opacity-0 delay-100">
+              <Label>
+                ¿Has pensado en diversificar tu portafolio invirtiendo en
+                terrenos patrimoniales?
+              </Label>
+              <Select
+                required={isActive}
+                onValueChange={(val) =>
+                  form.setWantsToDiversify(val as "si" | "no")
+                }
+              >
+                <SelectTrigger>
+                  <SelectValue placeholder="Selecciona una opción" />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="si">Si</SelectItem>
+                  <SelectItem value="no">No</SelectItem>
+                </SelectContent>
+              </Select>
+            </fieldset>
+            {form.wantsToDiversify === "no" && (
+              <p className="text-muted-foreground text-sm font-medium">
+                Al invertir en tierra, la materia prima de cualquier negocio
+                inmobiliario, podrás maximizar tus ganancias.
+              </p>
+            )}
+          </>
         )}
         {form.currentInvestment === "no" && (
-          <fieldset className="space-y-2 animate-fade-up opacity-0 delay-100">
-            <Label>
-              ¿Invertirias en un modelo de inversión seguro donde puedes
-              proteger tu dinero de la inflación y aumentar su valor con el paso
-              del tiempo?
-            </Label>
-            <Select
-              required={isActive}
-              onValueChange={(val) => form.setWantsToInvest(val as "si" | "no")}
-            >
-              <SelectTrigger>
-                <SelectValue placeholder="Selecciona una opción" />
-              </SelectTrigger>
-              <SelectContent>
-                <SelectItem value="si">Si</SelectItem>
-                <SelectItem value="no">No</SelectItem>
-              </SelectContent>
-            </Select>
-          </fieldset>
+          <>
+            <fieldset className="space-y-2 animate-fade-up opacity-0 delay-100">
+              <Label>
+                ¿Invertirias en un modelo de inversión seguro donde puedes
+                proteger tu dinero de la inflación y aumentar su valor con el
+                paso del tiempo?
+              </Label>
+              <Select
+                required={isActive}
+                onValueChange={(val) =>
+                  form.setWantsToInvest(val as "si" | "no")
+                }
+              >
+                <SelectTrigger>
+                  <SelectValue placeholder="Selecciona una opción" />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="si">Si</SelectItem>
+                  <SelectItem value="no">No</SelectItem>
+                </SelectContent>
+              </Select>
+            </fieldset>
+            {form.wantsToInvest === "no" && (
+              <p className="text-muted-foreground text-sm font-medium">
+                Para lograr una independencia financiera, el mejor camino es la
+                inversión. Tú puedes hacer que el dinero trabaje para ti sin que
+                tengas que ser un experto.
+              </p>
+            )}
+          </>
         )}
+
         {showAmountField && (
           <fieldset className="space-y-2 animate-fade-up opacity-0 delay-100">
             <Label>
