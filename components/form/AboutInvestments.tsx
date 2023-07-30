@@ -123,8 +123,8 @@ export const AboutInvestments = ({
                   <SelectItem value="Desconocimiento sobre Inversiones">
                     Desconocimiento sobre Inversiones
                   </SelectItem>
-                  <SelectItem value="No consigo una buena rentabilidad">
-                    No consigo una buena rentabilidad
+                  <SelectItem value="Creo que se necesita mucho dinero">
+                    Creo que se necesita mucho dinero
                   </SelectItem>
                   <SelectItem value="No encuentro el momento ideal">
                     No encuentro el momento ideal
