@@ -39,6 +39,10 @@ export const Form = ({ user }: FormProps) => {
         noInvestReasonOther: formState.noInvestReasonOther,
         wantsToDiversify: formState.wantsToDiversify,
         wantsToInvest: formState.wantsToInvest,
+        motivationReason: formState.motivationReason,
+        motivationReasonOther: formState.motivationReasonOther,
+        investmentFocus: formState.investmentFocus,
+        financialSatisfaction: formState.financialSatisfaction,
       };
 
       try {

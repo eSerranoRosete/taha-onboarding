@@ -1,12 +1,19 @@
 import { create } from "zustand";
 
 export type FormState = {
+  financialSatisfaction?: number;
+
   currentInvestment?: "si" | "no";
   investmentType?: string;
   investmentOther?: string;
 
   noInvestReason?: string;
   noInvestReasonOther?: string;
+
+  motivationReason?: string;
+  motivationReasonOther?: string;
+
+  investmentFocus?: string;
 
   wantsToDiversify?: "si" | "no";
   wantsToInvest?: "si" | "no";
@@ -19,12 +26,19 @@ export type FormState = {
 };
 
 type FormActions = {
+  setFinancialSatifaction: (financialSatisfaction: number) => void;
+
   setCurrentInvestment: (currentInvestment: "si" | "no") => void;
   setInvestmentType: (investmentType: string) => void;
   setInvestmentOther: (investmentOther: string) => void;
 
   setNoInvestReason: (noInvestReason: string) => void;
   setNoInvestReasonOther: (noInvestReasonOther: string) => void;
+
+  setMotivationReason: (motivationReason: string) => void;
+  setMotivationReasonOther: (motivationReasonOther: string) => void;
+
+  setInvestmentFocus: (investmentFocus: string) => void;
 
   setWantsToDiversify: (wantsToDiversify: "si" | "no") => void;
   setWantsToInvest: (wantsToInvest: "si" | "no") => void;
@@ -39,6 +53,11 @@ type FormActions = {
 };
 
 export const useFormStore = create<FormState & FormActions>((set) => ({
+  financialSatisfaction: 0,
+
+  setFinancialSatifaction: (financialSatisfaction) =>
+    set((state) => ({ ...state, financialSatisfaction })),
+
   setCurrentInvestment: (currentInvestment) =>
     set((state) => ({
       ...state,
@@ -48,12 +67,16 @@ export const useFormStore = create<FormState & FormActions>((set) => ({
         investmentOther: undefined,
         wantsToDiversify: undefined,
         investAmount: undefined,
+        motivationReason: undefined,
+        motivationReasonOther: undefined,
       }),
       ...(currentInvestment === "si" && {
         noInvestReason: undefined,
         noInvestReasonOther: undefined,
         wantsToInvest: undefined,
         investAmount: undefined,
+        motivationReason: undefined,
+        motivationReasonOther: undefined,
       }),
     })),
   setInvestmentType: (investmentType) =>
@@ -74,6 +97,16 @@ export const useFormStore = create<FormState & FormActions>((set) => ({
 
   setNoInvestReasonOther: (noInvestReasonOther) =>
     set((state) => ({ ...state, noInvestReasonOther })),
+
+  setMotivationReason: (motivationReason) =>
+    set((state) => ({ ...state, motivationReason })),
+
+  setMotivationReasonOther(motivationReasonOther) {
+    set((state) => ({ ...state, motivationReasonOther }));
+  },
+
+  setInvestmentFocus: (investmentFocus) =>
+    set((state) => ({ ...state, investmentFocus })),
 
   setWantsToDiversify: (wantsToDiversify) =>
     set((state) => ({

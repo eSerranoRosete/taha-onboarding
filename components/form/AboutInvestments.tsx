@@ -21,6 +21,9 @@ import { useFormStore } from "@/context/useFormContext";
 import { Textarea } from "../ui/textarea";
 import { Label } from "../ui/label";
 
+import { Slider } from "../ui/slider";
+import { Badge } from "../ui/badge";
+
 type AboutInvestmentsProps = {
   isActive: boolean;
   onPrev: () => void;
@@ -45,6 +48,24 @@ export const AboutInvestments = ({
         <CardTitle>Acerca de Inversiones</CardTitle>
       </CardHeader>
       <CardContent className="space-y-5">
+        <fieldset className="space-y-4 animate-fade-up opacity-0 delay-100">
+          <Label>
+            Del 1 al 10 indica que tan satisfecho(a) te encuentras al día de hoy
+            con tu solvencia económica
+          </Label>
+          <Slider
+            defaultValue={[1]}
+            min={1}
+            max={10}
+            step={1}
+            onValueChange={(val) => form.setFinancialSatifaction(val[0])}
+          />
+          <div className="text-xs flex items-center justify-between">
+            <span className="font-semibold">Nada Satisfecho</span>
+            <Badge>{form.financialSatisfaction}</Badge>
+            <span className="font-semibold">Muy Satisfecho</span>
+          </div>
+        </fieldset>
         <fieldset className="space-y-2 animate-fade-up opacity-0 delay-100">
           <Label>¿Actualmente cuentas con alguna inversión?</Label>
           <Select
@@ -145,6 +166,38 @@ export const AboutInvestments = ({
             )}
           </>
         )}
+        <fieldset className="space-y-2 animate-fade-up opacity-0 delay-100">
+          <Label>
+            {form.currentInvestment === "si"
+              ? "¿Qué te motiva a invertir?"
+              : "¿Qué te motivaría a dar el siguiente paso y comenzar a invertir?"}
+          </Label>
+          <Select
+            required={isActive}
+            onValueChange={(val) => form.setMotivationReason(val)}
+          >
+            <SelectTrigger>
+              <SelectValue placeholder="Selecciona una opción" />
+            </SelectTrigger>
+            <SelectContent>
+              {motivationReasons.map((reason) => (
+                <SelectItem key={reason} value={reason}>
+                  {reason}
+                </SelectItem>
+              ))}
+            </SelectContent>
+          </Select>
+        </fieldset>
+        {form.motivationReason === "Otro" && (
+          <fieldset className="space-y-2 animate-fade-up opacity-0 delay-100">
+            <Label>Especifica otro motivo:</Label>
+            <Textarea
+              required
+              onBlur={(e) => form.setMotivationReasonOther(e.target.value)}
+              className="resize-none"
+            />
+          </fieldset>
+        )}
       </CardContent>
       <CardFooter className="justify-end space-x-4">
         <Button variant="ghost" type="button" onClick={onPrev}>
@@ -155,3 +208,14 @@ export const AboutInvestments = ({
     </Card>
   );
 };
+
+const motivationReasons = [
+  "Blindar tu economía ante cualquier eventualidad",
+  "Generar un cambio en tu estilo de vida",
+  "Tener una vejez tranquila",
+  "Lograr independencia financiera",
+  "Viajar",
+  "Vivir en un lugar soñado",
+  "Dejar un legado para mi familia",
+  "Otro",
+];

@@ -43,6 +43,13 @@ export default function Email(answers: FormState) {
             </Section>
             <Hr className="my-5" />
             <Section>
+              <Text className="flex flex-col">
+                <span className="mr-1 font-bold">
+                  Del 1 al 10 indica que tan satisfecho(a) te encuentras al día
+                  de hoy con tu solvencia económica
+                </span>
+                <span>{answers.financialSatisfaction}</span>
+              </Text>
               {answers.currentInvestment === "si" && (
                 <>
                   <Text className="flex flex-col">
@@ -67,10 +74,32 @@ export default function Email(answers: FormState) {
                   )}
                   <Text className="flex flex-col">
                     <span className="mr-1 font-bold">
+                      ¿Qué te motiva a invertir?
+                    </span>
+                    <span>{answers.motivationReason}</span>
+                  </Text>
+                  {answers.investmentType === "Otro" && (
+                    <Text className="flex flex-col">
+                      <span className="mr-1 font-bold">
+                        Especifica otro motivo
+                      </span>
+                      <span>{answers.motivationReasonOther}</span>
+                    </Text>
+                  )}
+                  <Text className="flex flex-col">
+                    <span className="mr-1 font-bold">
                       {Questions.wantsToDiversify}
                     </span>
                     <span>{answers.wantsToDiversify}</span>
                   </Text>
+                  {answers.wantsToDiversify === "si" && (
+                    <Text className="flex flex-col">
+                      <span className="mr-1 font-bold">
+                        ¿Qué enfoque le darías a tu inversión?
+                      </span>
+                      <span>{answers.investmentFocus}</span>
+                    </Text>
+                  )}
                   <Text className="flex flex-col">
                     <span className="mr-1 font-bold">
                       {Questions.investAmount}
@@ -98,7 +127,7 @@ export default function Email(answers: FormState) {
                       <span className="mr-1 font-bold">
                         {Questions.noInvestReasonOther}
                       </span>
-                      <span>{answers.noInvestReasonOther}</span>
+                      <span>{answers.noInvestReason}</span>
                     </Text>
                   )}
                   <Text className="flex flex-col">

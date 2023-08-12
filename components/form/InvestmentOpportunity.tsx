@@ -67,6 +67,29 @@ export const InvestmentOpportunity = ({
                 </SelectContent>
               </Select>
             </fieldset>
+
+            {form.wantsToDiversify === "si" && (
+              <fieldset className="space-y-2 animate-fade-up opacity-0 delay-100">
+                <Label>¿Qué enfoque le darías a tu inversión?</Label>
+                <Select
+                  required={isActive}
+                  onValueChange={(val) => form.setInvestmentFocus(val)}
+                >
+                  <SelectTrigger>
+                    <SelectValue placeholder="Selecciona una opción" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="Creación de Patrimonio">
+                      Creación de Patrimonio
+                    </SelectItem>
+                    <SelectItem value="Creación de Flujo de Efectivo">
+                      Creación de Flujo de Efectivo
+                    </SelectItem>
+                  </SelectContent>
+                </Select>
+              </fieldset>
+            )}
+
             {form.wantsToDiversify === "no" && (
               <p className="text-muted-foreground text-sm font-medium">
                 Al invertir en tierra, la materia prima de cualquier negocio
@@ -79,9 +102,9 @@ export const InvestmentOpportunity = ({
           <>
             <fieldset className="space-y-2 animate-fade-up opacity-0 delay-100">
               <Label>
-                ¿Invertirias en un modelo de inversión seguro donde puedes
-                proteger tu dinero de la inflación y aumentar su valor con el
-                paso del tiempo?
+                ¿Estarías abierto a escuchar sobre un modelo de inversión seguro
+                donde puedes proteger tu dinero de la inflación y aumentar su
+                valor con el paso del tiempo?
               </Label>
               <Select
                 required={isActive}
@@ -111,7 +134,7 @@ export const InvestmentOpportunity = ({
         {showAmountField && (
           <fieldset className="space-y-2 animate-fade-up opacity-0 delay-100">
             <Label>
-              ¿Cuanto estarías dispuesto a destinar de manera mensual a este
+              ¿Cuánto estarías dispuesto a destinar de manera mensual a este
               tipo de inversión?
             </Label>
             <Select
